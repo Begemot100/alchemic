@@ -1,0 +1,129 @@
+
+
+class Water:
+
+    def __str__(self):
+        return 'воды'
+
+    def __add__(self, other):
+        if other == fire:
+            return Steam (part1=self, part2=other)
+        elif other == air:
+            return Storm (part1=self, part2=other)
+        else:
+            return Dirty(part1=self, part2=other)
+
+
+class Fire:
+    def __str__(self):
+        return 'огня'
+
+    def __add__(self, other):
+        if other == water:
+            return Steam(part1=self, part2=other)
+        elif other == air:
+            return Flash(part1=self, part2 = other)
+        else:
+            return Lava(part1=self, part2=other)
+
+
+class Air:
+    def __str__(self):
+        return 'воздуха'
+
+    def __add__(self,other):
+        if other == water:
+            return Storm (part1=self, part2 = other)
+        elif other == fire:
+            return Flash(part1=self, part2=other)
+
+class Steam:
+    def __init__(self, part1, part2):
+        self.part1 = part1
+        self.part2 = part2
+
+    def __str__(self):
+        return 'Пар. Состою из ' + str(self.part1) + ' и ' + str(self.part2)
+
+class Storm:
+    def __init__(self, part1, part2):
+        self.part1 = part1
+        self.part2 = part2
+
+    def __str__(self):
+        return 'Шторм. Состою из ' + str(self.part1) + ' и ' + str(self.part2)
+
+class Flash:
+    def __init__(self, part1, part2):
+        self.part1 = part1
+        self.part2 = part2
+
+    def __str__(self):
+        return 'Молния. Состою из ' + str(self.part1) + ' и ' + str(self.part2)
+
+class Soil:
+
+    def __str__(self):
+        return 'Земли'
+
+    def __add__(self, other):
+        if other == water:
+            return Dirty (part1=self, part2=other)
+        elif other == air:
+            return Dust (part1=self, part2=other)
+        else:
+            return Lava(part1=self, part2=other)
+
+
+class Dirty:
+
+    def __init__(self, part1, part2):
+        self.part1 = part1
+        self.part2 = part2
+
+    def __str__(self):
+        return 'Грязь. Состою из ' + str(self.part1) + ' и ' + str(self.part2)
+
+class Dust:
+
+    def __init__(self, part1, part2):
+        self.part1 = part1
+        self.part2 = part2
+
+    def __str__(self):
+        return 'Пыль. Состою из ' + str(self.part1) + ' и ' + str(self.part2)
+
+
+class Lava():
+
+    def __init__(self, part1, part2):
+        self.part1 = part1
+        self.part2 = part2
+
+    def __str__(self):
+        return 'Лава. Состою из ' + str(self.part1) + ' и ' + str(self.part2)
+
+
+
+
+
+
+water = Water()
+air = Air()
+fire = Fire()
+flash = Flash(part1=Air,part2=Water)
+lava = Lava(part1=Fire,part2=Soil)
+dust = Dust(part1=Air,part2=Soil)
+dirty = Dirty(part1=Water,part2=Soil)
+soil = Soil()
+stormm = air+water
+steamm = water + fire
+flashh = air + fire
+dirtyy = water + soil
+dustt = air + soil
+lavaa = fire + soil
+print(stormm)
+print(steamm)
+print(flashh)
+print(dirtyy)
+print(lavaa)
